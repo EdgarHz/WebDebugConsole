@@ -1,22 +1,19 @@
-#import <Foundation/Foundation.h>
+#import <CocoaHTTPServer/WebSocket.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import "WebSocket.h"
+#import <Foundation/Foundation.h>
 
+#define WebSocketLoggerDidDieNotification @"WebSocketLoggerDidDie"
 
-#define WebSocketLoggerDidDieNotification  @"WebSocketLoggerDidDie"
-
-@interface WebSocketLogger : DDAbstractLogger <DDLogger>
-{
+@interface WebSocketLogger : DDAbstractLogger <DDLogger> {
     WebSocket *websocket;
-    BOOL isWebSocketOpen;
+    BOOL       isWebSocketOpen;
 }
 
 - (id)initWithWebSocket:(WebSocket *)ws;
 
 @end
 
-@interface WebSocketFormatter : NSObject <DDLogFormatter>
-{
+@interface WebSocketFormatter : NSObject <DDLogFormatter> {
     NSDateFormatter *dateFormatter;
 }
 
