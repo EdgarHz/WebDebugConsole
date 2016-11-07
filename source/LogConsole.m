@@ -13,7 +13,12 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 // Log levels: off, error, warn, info, verbose
+#ifndef LOG_LEVEL_DEF
+static const DDLogLevel thisLogLevel = DDLogLevelVerbose;
+#define LOG_LEVEL_DEF thisLogLevel
+#else
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#endif
 
 @implementation LogConsole
 @synthesize     fileLogger;
